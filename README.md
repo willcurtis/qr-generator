@@ -56,7 +56,7 @@ python3 generate_qr.py --wifi "SSID" "WPA2" "mypassword"
 ### 👤 vCard
 
 ```bash
-python3 generate_qr.py --vcard "Will Curtis" "NXTGen Tech" "+441234567890" "will@example.com" "CTO"
+python3 generate_qr.py --vcard "Will Curtis" "The Tech Shed" "+441234567890" "will@example.com" "CTO"
 ```
 
 ### 💬 SMS
