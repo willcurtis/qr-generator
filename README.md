@@ -38,43 +38,43 @@ python3 generate_qr.py [OPTIONS]
 ### 🔗 URL
 
 ```bash
-python3 generate_qr.py --url "https://example.com"
+python3 generate_qr.py --url 'https://example.com'
 ```
 
 ### 📞 Phone
 
 ```bash
-python3 generate_qr.py --tel "+441234567890"
+python3 generate_qr.py --tel '+441234567890'
 ```
 
 ### 📶 WiFi
 
 ```bash
-python3 generate_qr.py --wifi "SSID" "WPA2" "mypassword"
+python3 generate_qr.py --wifi 'SSID' 'WPA2' 'mypassword'
 ```
 
 ### 👤 vCard
 
 ```bash
-python3 generate_qr.py --vcard "Will Curtis" "The Tech Shed" "+441234567890" "will@example.com" "CTO"
+python3 generate_qr.py --vcard 'Will Curtis' 'The Tech Shed' '+441234567890' 'will@example.com' 'CTO'
 ```
 
 ### 💬 SMS
 
 ```bash
-python3 generate_qr.py --sms "+441234567890" "Hello there!"
+python3 generate_qr.py --sms '+441234567890' 'Hello there!'
 ```
 
 ### 📅 Calendar Event
 
 ```bash
-python3 generate_qr.py --event "Meeting" "2025-06-01T14:00" "2025-06-01T15:00" "HQ" "Discuss roadmap"
+python3 generate_qr.py --event 'Meeting' '2025-06-01T14:00' '2025-06-01T15:00' 'HQ' 'Discuss roadmap'
 ```
 
 ### 📝 Plain Text
 
 ```bash
-python3 generate_qr.py --text "Hello from QR world!"
+python3 generate_qr.py --text 'Hello from QR world!'
 ```
 
 ---
@@ -84,7 +84,7 @@ python3 generate_qr.py --text "Hello from QR world!"
 By default, the QR code is saved as `qrcode.png`. Use `--output` to specify a custom filename:
 
 ```bash
-python3 generate_qr.py --url "https://example.com" --output mysite.png
+python3 generate_qr.py --url 'https://example.com' --output mysite.png
 ```
 
 ---
