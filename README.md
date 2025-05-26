@@ -24,7 +24,7 @@ A flexible command-line QR code generator written in Python. Supports encoding U
 Install dependencies:
 
 ```bash
-pip install qrcode[pil]
+pip install qrcode pillow
 ```
 
 ---
