@@ -97,4 +97,4 @@ MIT License. Free to use, modify, and distribute.
 
 ## ✨ Credits
 
-Built by [Your Name] at [Your GitHub or Company Link]
+Built by Will Curtis at <a href="https://thetechshed.dev">The Tech Shed</a>
