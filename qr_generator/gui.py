@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 import webbrowser
+from importlib.resources import files
 from pathlib import Path
 from tkinter import filedialog
 
 import customtkinter as ctk
+from PIL import Image, ImageTk
 
 from .core import create_qr
 from .payloads import PayloadError, make_event, make_sms, make_tel, make_text, make_url, make_vcard, make_wifi
@@ -52,6 +54,10 @@ class QRGeneratorApp(ctk.CTk):
         self.entries: list[ctk.CTkEntry] = []
         self.preview_image: ctk.CTkImage | None = None
         self.qr_image = None
+        logo_image = Image.open(files("qr_generator").joinpath("assets/tts-round-outline.png"))
+        self.logo = ctk.CTkImage(light_image=logo_image, dark_image=logo_image, size=(76, 76))
+        self.window_icon = ImageTk.PhotoImage(logo_image.resize((64, 64)))
+        self.iconphoto(True, self.window_icon)
         self._build()
         self._build_form("URL")
 
@@ -59,8 +65,9 @@ class QRGeneratorApp(ctk.CTk):
         ctk.CTkFrame(self, height=3, corner_radius=0, fg_color=TEAL).pack(fill="x")
         header = ctk.CTkFrame(self, fg_color=SURFACE, corner_radius=18, border_width=1, border_color=BORDER)
         header.pack(fill="x", padx=24, pady=(20, 14))
+        ctk.CTkLabel(header, text="", image=self.logo).pack(side="left", padx=(18, 2), pady=10)
         title_box = ctk.CTkFrame(header, fg_color="transparent")
-        title_box.pack(side="left", padx=22, pady=15)
+        title_box.pack(side="left", padx=(12, 22), pady=15)
         ctk.CTkLabel(title_box, text="THE TECH SHED", text_color=TEAL, font=("Arial", 11, "bold")).pack(anchor="w")
         ctk.CTkLabel(title_box, text="QR Generator", text_color=TEXT, font=("Arial", 28, "bold")).pack(anchor="w")
         ctk.CTkLabel(

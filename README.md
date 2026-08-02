@@ -26,13 +26,13 @@ Clone the repository, then create an isolated environment:
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install -e .
+python -m pip install .
 ```
 
 For development tools and tests, use:
 
 ```bash
-python -m pip install -e '.[dev]'
+python -m pip install '.[dev]'
 ```
 
 ## Desktop app

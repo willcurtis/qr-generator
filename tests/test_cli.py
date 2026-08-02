@@ -1,4 +1,5 @@
 from argparse import Namespace
+from importlib.resources import files
 
 from qr_generator.cli import build_parser, payload_from_args
 
@@ -12,3 +13,8 @@ def test_empty_text_reaches_validation():
     args = build_parser().parse_args(["--text", ""])
     assert isinstance(args, Namespace)
     assert args.text == ""
+
+
+def test_packaged_logo_is_available():
+    logo = files("qr_generator").joinpath("assets/tts-round-outline.png")
+    assert logo.is_file()
