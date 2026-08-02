@@ -25,6 +25,9 @@ qr-generator-gui = "qr_generator.gui:run"
 [tool.setuptools.packages.find]
 include = ["qr_generator*"]
 
+[tool.setuptools.package-data]
+qr_generator = ["assets/*.png"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
