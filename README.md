@@ -37,6 +37,8 @@ python -m pip install '.[dev]'
 
 ## Desktop app
 
+![The Tech Shed QR Generator desktop app](docs/images/qr-generator-gui.png)
+
 Launch the app with either command:
 
 ```bash
