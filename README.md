@@ -1,100 +1,102 @@
-# QR Code Generator
+# The Tech Shed QR Generator
 
-A flexible command-line QR code generator written in Python. Supports encoding URLs, WiFi credentials, vCards, SMS, calendar events, telephone links, and plain text into QR codes.
+A validated QR code generator with both a command-line interface and a Tech Shed themed desktop app. It supports URLs, Wi-Fi credentials, vCards, SMS messages, calendar events, telephone links, and plain text.
 
----
+## Features
 
-## 🚀 Features
+- Desktop app with QR preview and PNG/JPEG export
+- URL, telephone, email, date, and output validation
+- Escaped Wi-Fi, vCard, and iCalendar payloads
+- Configurable colours, scale, border, and error correction
+- Cross-platform Python packaging and console commands
+- Automated payload and CLI tests
 
-- ✅ URLs
-- ✅ Phone numbers
-- ✅ WiFi credentials
-- ✅ vCard contact info
-- ✅ SMS messages
-- ✅ Calendar events
-- ✅ Plain text
+## Requirements
 
----
+- Python 3.10 or newer
+- A working Tk installation for the desktop app
 
-## 📦 Requirements
+On macOS, the Python installer from [python.org](https://www.python.org/downloads/) includes Tk. Homebrew users may need a matching `python-tk` package.
 
-- Python 3.6+
-- `qrcode` and `Pillow` packages
+## Installation
 
-Install dependencies:
-
-```bash
-pip install qrcode pillow
-```
-
----
-
-## 🛠 Usage
+Clone the repository, then create an isolated environment:
 
 ```bash
-python3 generate_qr.py [OPTIONS]
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e .
 ```
 
-### 🔗 URL
+For development tools and tests, use:
+
+```bash
+python -m pip install -e '.[dev]'
+```
+
+## Desktop app
+
+Launch the app with either command:
+
+```bash
+qr-generator-gui
+qr-generator --gui
+```
+
+Choose a content type, enter the required values, generate a preview, and select **Save QR code**.
+
+## Command line
+
+```bash
+qr-generator [CONTENT OPTION] [IMAGE OPTIONS]
+```
+
+The original script entry point remains available:
 
 ```bash
 python3 generate_qr.py --url 'https://example.com'
 ```
 
-### 📞 Phone
+### Examples
 
 ```bash
-python3 generate_qr.py --tel '+441234567890'
+qr-generator --url 'https://example.com'
+qr-generator --tel '+441234567890'
+qr-generator --wifi 'SSID' 'WPA2' 'mypassword'
+qr-generator --vcard 'Will Curtis' 'The Tech Shed' '+441234567890' 'will@example.com' 'Director'
+qr-generator --sms '+441234567890' 'Hello there!'
+qr-generator --event 'Meeting' '2026-08-03T14:00' '2026-08-03T15:00' 'HQ' 'Discuss roadmap'
+qr-generator --text 'Hello from QR world!'
 ```
 
-### 📶 WiFi
+SMS messages may be quoted or supplied as separate words; all words after the number are preserved.
+
+### Image options
 
 ```bash
-python3 generate_qr.py --wifi 'SSID' 'WPA2' 'mypassword'
+qr-generator --url 'https://example.com' \
+  --output mysite.png \
+  --error-correction H \
+  --box-size 12 \
+  --border 4 \
+  --foreground '#06141E' \
+  --background '#F3FAFC'
 ```
 
-### 👤 vCard
+Supported error-correction levels are `L`, `M`, `Q`, and `H`. QR specifications require a quiet-zone border of at least four modules, so smaller values are rejected.
+
+Calendar times use the local floating format `YYYY-MM-DDTHH:MM`. They intentionally do not attach a timezone; the importing calendar application interprets them in its local timezone.
+
+## Tests and linting
 
 ```bash
-python3 generate_qr.py --vcard 'Will Curtis' 'The Tech Shed' '+441234567890' 'will@example.com' 'CTO'
+python -m pytest -q
+python -m ruff check .
 ```
 
-### 💬 SMS
-
-```bash
-python3 generate_qr.py --sms '+441234567890' 'Hello there!'
-```
-
-### 📅 Calendar Event
-
-```bash
-python3 generate_qr.py --event 'Meeting' '2025-06-01T14:00' '2025-06-01T15:00' 'HQ' 'Discuss roadmap'
-```
-
-### 📝 Plain Text
-
-```bash
-python3 generate_qr.py --text 'Hello from QR world!'
-```
-
----
-
-## 💾 Output
-
-By default, the QR code is saved as `qrcode.png`. Use `--output` to specify a custom filename:
-
-```bash
-python3 generate_qr.py --url 'https://example.com' --output mysite.png
-```
-
----
-
-## 📁 License
+## License
 
 MIT License. Free to use, modify, and distribute.
 
----
-
-## ✨ Credits
-
-Built by Will Curtis at <a href="https://thetechshed.dev">The Tech Shed</a>
+Built by [The Tech Shed](https://thetechshed.dev).
